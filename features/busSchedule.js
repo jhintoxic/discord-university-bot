@@ -94,4 +94,32 @@ function getUpcoming(direction, date = new Date(), count = 3) {
   return { dayType, times: upcoming, finished: upcoming.length === 0 };
 }
 
-module.exports = { getUpcoming, getDayType, DAY_LABELS };
+const CATCH_UP_WINDOW_MIN = 60;
+
+function getCatchUpList(periods, date = new Date()) {
+  const dayType = getDayType(date);
+  const nowMin = date.getHours() * 60 + date.getMinutes();
+
+  if (dayType === 'sunday') {
+    return { dayType, results: [] };
+  }
+
+  const times = SCHEDULE[dayType].aihara;
+
+  const results = Object.entries(periods).map(([periodNum, period]) => {
+    const startMin = toMinutes(period.start);
+    if (startMin < nowMin) {
+      return { period: Number(periodNum), start: period.start, passed: true, candidates: [] };
+    }
+    const windowStart = startMin - CATCH_UP_WINDOW_MIN;
+    const candidates = times.filter(t => {
+      const m = toMinutes(t);
+      return m >= windowStart && m <= startMin;
+    });
+    return { period: Number(periodNum), start: period.start, passed: false, candidates };
+  });
+
+  return { dayType, results };
+}
+
+module.exports = { getUpcoming, getDayType, getCatchUpList, DAY_LABELS };
