@@ -1,0 +1,6 @@
+node_modules
+.env
+bot.log
+run-bot.bat
+start-hidden.vbs
+.git

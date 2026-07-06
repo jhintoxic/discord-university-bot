@@ -1,0 +1,15 @@
+{
+  "name": "discord-university-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "授業の時間割・課題締切・Classroom通知をまとめるDiscordボット",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5"
+  }
+}
