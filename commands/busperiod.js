@@ -24,7 +24,7 @@ module.exports = {
     const r = results[0];
 
     const description = r.passed
-      ? 'このコマはすでに開始しています。'
+      ? 'このコマの便はすでに発車済みです。'
       : r.candidates.length > 0
         ? r.candidates.join(' / ')
         : '間に合う便がありません。';

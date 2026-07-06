@@ -19,7 +19,7 @@ module.exports = {
     const { results } = bus.getCatchUpList(timetable.PERIODS, now);
 
     const lines = results.map(r => {
-      if (r.passed) return `**${r.period}限**(${r.start}開始) — 開始済み`;
+      if (r.passed) return `**${r.period}限**(${r.start}開始) — 発車済み`;
       if (r.candidates.length === 0) return `**${r.period}限**(${r.start}開始) — 間に合う便なし`;
       return `**${r.period}限**(${r.start}開始) — ${r.candidates.join(' / ')}`;
     });
