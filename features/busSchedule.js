@@ -122,4 +122,8 @@ function getCatchUpList(periods, date = new Date()) {
   return { dayType, results };
 }
 
-module.exports = { getUpcoming, getDayType, getCatchUpList, DAY_LABELS };
+function getSchedule(dayType) {
+  return SCHEDULE[dayType] || null;
+}
+
+module.exports = { getUpcoming, getDayType, getCatchUpList, getSchedule, DAY_LABELS };
