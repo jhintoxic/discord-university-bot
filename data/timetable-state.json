@@ -50,5 +50,14 @@
       "title": "メディアデザイン論B"
     }
   ],
-  "subscriptions": []
+  "subscriptions": [
+    {
+      "channelId": "1523173697706528788",
+      "userId": "894087520923549708",
+      "time": "07:00",
+      "keyword": null,
+      "lastDigestDate": null,
+      "firedKeys": []
+    }
+  ]
 }
